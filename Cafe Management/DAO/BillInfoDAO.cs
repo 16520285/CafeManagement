@@ -30,6 +30,10 @@ namespace Cafe_Management.DAO
             }
             return listBillInfo;
         }
+        public void InsertBillInfo(int idBill, int idFood, int amount)
+        {
+            DataProvider.Instance.ExecuteNonQuery("EXEC USP_INSERTBILLINFO  @idBill , @idFood , @amount", new object[] {idBill, idFood, amount });
+        } 
 
     }
 }

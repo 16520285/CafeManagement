@@ -16,8 +16,10 @@ namespace Cafe_Management
         public Admin()
         {
             InitializeComponent();
+            LoadFoodList();
           
         }
+
 
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
         {
@@ -30,6 +32,10 @@ namespace Cafe_Management
             
             dtgvAccount.DataSource = DataProvider.Instance.ExecuteQuery(query,new object[] {"admin"});
             //dataGridView1.DataSource= provider.ExecuteQuery(query, new object[] { "admin" });
+        }
+        void LoadBillListByDate(DateTime checkIn, DateTime checkOut)
+        {
+            dtgvRevenue.DataSource = BillDAO.Instance.GetBillListByDate(checkIn, checkOut);
         }
 
         private void dtgvAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -44,6 +50,20 @@ namespace Cafe_Management
                 this.Close();
                 Application.Exit();
             }
+        }
+
+        private void btnRevenueFigure_Click(object sender, EventArgs e)
+        {
+            LoadBillListByDate(dtpFrom.Value, dtpTo.Value);
+        }
+        private void LoadFoodList()
+        {
+            dtgvFood.DataSource = FoodDAO.Instance.LoadFoodList();
+        }
+
+        private void dtgrFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

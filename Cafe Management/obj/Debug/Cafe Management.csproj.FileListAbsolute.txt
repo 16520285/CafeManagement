@@ -13,3 +13,18 @@ c:\users\huỳnhphươngduy\source\repos\Cafe Management\Cafe Management\obj\Deb
 c:\users\huỳnhphươngduy\source\repos\Cafe Management\Cafe Management\obj\Debug\Cafe Management.pdb
 c:\users\huỳnhphươngduy\source\repos\Cafe Management\Cafe Management\obj\Debug\Cafe_Management.fTableManager.resources
 c:\users\huỳnhphươngduy\source\repos\Cafe Management\Cafe Management\obj\Debug\Cafe_Management.Admin.resources
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\bin\Debug\Cafe Management.exe.config
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\bin\Debug\Cafe Management.exe
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\bin\Debug\Cafe Management.pdb
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\bin\Debug\Bunifu_UI_v1.5.3.dll
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\bin\Debug\Bunifu.Core.dll
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe Management.csprojAssemblyReference.cache
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe_Management.Admin.resources
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe_Management.Form1.resources
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe_Management.fTableManager.resources
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe_Management.Properties.Resources.resources
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe Management.csproj.GenerateResource.cache
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe Management.csproj.CoreCompileInputs.cache
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe Management.csproj.CopyComplete
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe Management.exe
+C:\Users\HuỳnhPhươngDuy\Desktop\CafeManagement\CafeManagement\Cafe Management\obj\Debug\Cafe Management.pdb

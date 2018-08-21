@@ -17,14 +17,15 @@ namespace Cafe_Management
    
     public partial class fTableManager : Form
     {
-        private float totalPrice;
+        private int totalPrice;
 
-        public float TotalPrice { get => totalPrice; set => totalPrice = value; }
+        public int TotalPrice { get => totalPrice; set => totalPrice = value; }
 
         public fTableManager()
         {
             InitializeComponent();
             LoadTable();
+            LoadCategory();
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,6 +57,7 @@ namespace Cafe_Management
         }
         void LoadTable()
         {
+            flpTable.Controls.Clear();
             List<Table> tableList = TableDAO.Instance.LoadTableList();
             foreach (Table table in tableList)
             {
@@ -78,15 +80,33 @@ namespace Cafe_Management
 
             }
         }
+        private void LoadCategory()
+        {
+            List<Category> listCategory = CategoryDAO.Instance.GetListCategory();
+            cbCategory.DataSource = listCategory;
+            cbCategory.DisplayMember = "name";
+        }
 
+        private void LoadFood(int idCategory)
+        {
+            List<Food> foodList = FoodDAO.Instance.GetFoodListByIdCategory(idCategory);
+            cbFood.DataSource = foodList;
+            cbFood.DisplayMember = "name";
+        }
+
+        
+            
+            
         private void TableBtn_Click(object sender, EventArgs e)
         {
             int idTable = ((sender as Button).Tag as Table).IdTable;
-            lvBill.Items.Clear();
+            lvBill.Tag = (sender as Button).Tag;
+         
             ShowBill(idTable);
         }
         void ShowBill(int idTable)
         {
+            lvBill.Items.Clear();
             List<BillPayment> listBillInfo =
             BillPaymentDAO.Instance.GetBillPaymentByTable(idTable);
             totalPrice = 0;
@@ -100,11 +120,12 @@ namespace Cafe_Management
                 totalPrice += item.TotalPrice;
                 lvBill.Items.Add(lvItem);
             }
+            this.TotalPrice = totalPrice;
             CultureInfo culture = new CultureInfo("vi-VN");
             Thread.CurrentThread.CurrentCulture = culture;
             total.Text = totalPrice.ToString("c");
         }
-
+        
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
 
@@ -113,6 +134,62 @@ namespace Cafe_Management
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = 0;
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedItem == null)
+                return;
+            Category selected = cb.SelectedItem as Category;
+            id = selected.IdCategory;
+            LoadFood(id);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Table table = lvBill.Tag as Table;
+            int idBill = BillDAO.Instance.GetUnCheckBillByIdTable(table.IdTable);
+            int idFood = (cbFood.SelectedItem as Food).IdFood;
+            int amount = (int)NoFood.Value;
+            if (idBill==-1)
+            {
+                BillDAO.Instance.InsertBill(table.IdTable);
+                BillInfoDAO.Instance.InsertBillInfo(BillDAO.Instance.GetMaxIdBill(),idFood, amount);
+            }
+            else
+            {
+                BillInfoDAO.Instance.InsertBillInfo(idBill, idFood, amount);
+            }
+
+            ShowBill(table.IdTable);
+
+            LoadTable();
+
+        }
+       
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            Table table = lvBill.Tag as Table;
+            int idBill = BillDAO.Instance.GetUnCheckBillByIdTable(table.IdTable);
+             if(idBill!=-1)
+            {
+               if( MessageBox.Show("Are you sure to charge table " + table.IdTable,"Charge", MessageBoxButtons.OKCancel)==System.Windows.Forms.DialogResult.OK)
+                {
+                    
+                    BillDAO.Instance.Charge(idBill,this.TotalPrice);
+                   
+                    ShowBill(table.IdTable);
+                    LoadTable();
+                    
+                }
+            }
         }
     }
 }

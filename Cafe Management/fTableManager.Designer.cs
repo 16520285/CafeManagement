@@ -37,6 +37,8 @@
             this.profileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.NoFood = new System.Windows.Forms.NumericUpDown();
             this.btnAdd = new Bunifu.Framework.UI.BunifuFlatButton();
             this.cbFood = new System.Windows.Forms.ComboBox();
@@ -48,13 +50,13 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel5 = new System.Windows.Forms.Panel();
+            this.total = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.total = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -151,6 +153,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.NoFood);
             this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Controls.Add(this.cbFood);
@@ -160,16 +164,35 @@
             this.panel3.Size = new System.Drawing.Size(412, 64);
             this.panel3.TabIndex = 3;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Food";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Category";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // NoFood
             // 
-            this.NoFood.Location = new System.Drawing.Point(328, 20);
+            this.NoFood.Location = new System.Drawing.Point(273, 18);
             this.NoFood.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
             this.NoFood.Name = "NoFood";
-            this.NoFood.Size = new System.Drawing.Size(48, 20);
+            this.NoFood.Size = new System.Drawing.Size(40, 20);
             this.NoFood.TabIndex = 3;
             this.NoFood.ThousandsSeparator = true;
             this.NoFood.Value = new decimal(new int[] {
@@ -200,7 +223,7 @@
             this.btnAdd.IconVisible = true;
             this.btnAdd.IconZoom = 90D;
             this.btnAdd.IsTab = false;
-            this.btnAdd.Location = new System.Drawing.Point(232, 3);
+            this.btnAdd.Location = new System.Drawing.Point(319, 3);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.btnAdd.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -212,22 +235,24 @@
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnAdd.Textcolor = System.Drawing.Color.White;
             this.btnAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // cbFood
             // 
             this.cbFood.FormattingEnabled = true;
-            this.cbFood.Location = new System.Drawing.Point(3, 30);
+            this.cbFood.Location = new System.Drawing.Point(82, 30);
             this.cbFood.Name = "cbFood";
-            this.cbFood.Size = new System.Drawing.Size(223, 21);
+            this.cbFood.Size = new System.Drawing.Size(185, 21);
             this.cbFood.TabIndex = 1;
             // 
             // cbCategory
             // 
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(3, 3);
+            this.cbCategory.Location = new System.Drawing.Point(82, 3);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(223, 21);
+            this.cbCategory.Size = new System.Drawing.Size(185, 21);
             this.cbCategory.TabIndex = 0;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -284,6 +309,16 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(416, 72);
             this.panel5.TabIndex = 5;
+            // 
+            // total
+            // 
+            this.total.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total.Location = new System.Drawing.Point(163, 14);
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Size = new System.Drawing.Size(154, 34);
+            this.total.TabIndex = 0;
+            this.total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // comboBox1
             // 
@@ -380,7 +415,7 @@
             this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton1.BorderRadius = 0;
-            this.bunifuFlatButton1.ButtonText = "Add";
+            this.bunifuFlatButton1.ButtonText = "Charge";
             this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
@@ -403,10 +438,11 @@
             this.bunifuFlatButton1.selected = false;
             this.bunifuFlatButton1.Size = new System.Drawing.Size(90, 48);
             this.bunifuFlatButton1.TabIndex = 4;
-            this.bunifuFlatButton1.Text = "Add";
+            this.bunifuFlatButton1.Text = "Charge";
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
             // flpTable
             // 
@@ -414,16 +450,6 @@
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(453, 463);
             this.flpTable.TabIndex = 6;
-            // 
-            // total
-            // 
-            this.total.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total.Location = new System.Drawing.Point(163, 14);
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Size = new System.Drawing.Size(154, 34);
-            this.total.TabIndex = 0;
-            this.total.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // fTableManager
             // 
@@ -444,6 +470,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NoFood)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -482,5 +509,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TextBox total;
         private System.Windows.Forms.ListView lvBill;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

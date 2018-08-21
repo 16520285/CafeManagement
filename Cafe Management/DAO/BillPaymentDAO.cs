@@ -21,12 +21,13 @@ namespace Cafe_Management.DAO
             List<BillPayment> billPayment = new List<BillPayment>();
             string query = "SELECT f.name ,bi.amount , f.price , f.price*bi.amount AS totalPrice  " +
                 "FROM BILL AS b, BILLINFO AS bi, FOOD AS f " +
-                "WHERE b.idBill = bi.idBill AND bi.idFood = f.idFood AND b.idTable = "+ idTable;
+                "WHERE b.status =N'Chưa thanh toán' AND b.idBill = bi.idBill AND bi.idFood = f.idFood AND b.idTable = "+ idTable;
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
                 BillPayment bill = new BillPayment(item);
                 billPayment.Add(bill);
+                
             }
             return billPayment;
 

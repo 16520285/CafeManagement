@@ -19,16 +19,16 @@ namespace Cafe_Management.DTO
 
         public BillInfo(int idBill, int idFood, int totalPrice)
         {
-            this.idBill = idBill;
-            this.idFood = idFood;
-            this.totalPrice = totalPrice;
+            this.IdBill = idBill;
+            this.IdFood = idFood;
+            this.TotalPrice = totalPrice;
         }
 
         public BillInfo(DataRow row)
         {
-            this.idBill = (int)row["idBill"];
-            this.idFood = (int)row["idFood"];
-            this.totalPrice = (int)row["totalPrice"];
+            this.IdBill = (int)row["idBill"];
+            this.IdFood = (int)row["idFood"];
+            this.TotalPrice = (int)row["totalPrice"];
 
         }
     }
