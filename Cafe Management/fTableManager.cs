@@ -43,8 +43,31 @@ namespace Cafe_Management
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Admin admin = new Admin();
-            this.Hide();
+            admin.InsertFood += Admin_InsertFood;
+            admin.UpdateFood += Admin_UpdateFood;
+            admin.DeleteFood += Admin_DeleteFood;
             admin.ShowDialog();
+        }
+
+        private void Admin_DeleteFood(object sender, EventArgs e)
+        {
+            LoadFood((cbCategory.SelectedItem as Category).IdCategory);
+            if (lvBill.Tag != null)
+                ShowBill((lvBill.Tag as Table).IdTable);
+        }
+
+        private void Admin_UpdateFood(object sender, EventArgs e)
+        {
+            LoadFood((cbCategory.SelectedItem as Category).IdCategory);
+            if (lvBill.Tag != null)
+                ShowBill((lvBill.Tag as Table).IdTable);
+        }
+
+        private void Admin_InsertFood(object sender, EventArgs e)
+        {
+            LoadFood((cbCategory.SelectedItem as Category).IdCategory);
+            if (lvBill.Tag != null)
+                ShowBill((lvBill.Tag as Table).IdTable);
         }
 
         private void bunifuFlatButton17_Click(object sender, EventArgs e)
@@ -155,6 +178,11 @@ namespace Cafe_Management
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Table table = lvBill.Tag as Table;
+            if (table == null)
+            {
+                MessageBox.Show("Hãy chọn bàn");
+                return;
+            }
             int idBill = BillDAO.Instance.GetUnCheckBillByIdTable(table.IdTable);
             int idFood = (cbFood.SelectedItem as Food).IdFood;
             int amount = (int)NoFood.Value;

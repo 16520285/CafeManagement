@@ -19,7 +19,7 @@ namespace Cafe_Management.DAO
         public List<Category> GetListCategory()
         {
             List<Category> listCategory = new List<Category>();
-            string query = "SELECT* FROM FOODCATEGORY";
+            string query = "SELECT * FROM FOODCATEGORY";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach  ( DataRow item in data.Rows)
             {
