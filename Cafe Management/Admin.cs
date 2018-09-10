@@ -24,19 +24,25 @@ namespace Cafe_Management
         public static extern bool ReleaseCapture();
 
         BindingSource foodList = new BindingSource();
+        BindingSource categoryList = new BindingSource();
         public Admin()
         {
 
             InitializeComponent();
             LoadFoodList();
-
+            LoadListCategory();
             LoadCategoryFromFood();
             dtgvFood.DataSource = foodList;
+            dtgvCategory.DataSource = categoryList;
             AddFoodBinding();
+            AddCategoryBinding();
 
         }
 
-
+        private void LoadListCategory()
+        {
+           categoryList.DataSource = CategoryDAO.Instance.GetListCategory();
+        }
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
         {
 
@@ -76,6 +82,7 @@ namespace Cafe_Management
         {
 
             foodList.DataSource = FoodDAO.Instance.LoadFoodList();
+           
 
 
 
@@ -188,6 +195,21 @@ namespace Cafe_Management
             add { updateFood += value; }
             remove { updateFood -= value; }
         }
+        private event EventHandler insertCategory;
+        public event EventHandler InsertCategory
+        {
+            add { insertCategory += value; }
+            remove { insertCategory += value; }
+        }
+        private event EventHandler updateCategory;
+        public event EventHandler UpdateCategory
+        {
+            add { updateCategory += value; }
+            remove { updateCategory += value; }
+        }
+
+
+
         DataTable SearchFoodByName(string name)
         {
            return FoodDAO.Instance.GetFoodListByName(name);
@@ -228,6 +250,51 @@ namespace Cafe_Management
         private void bunifuFlatButton4_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+        private void AddCategoryBinding()
+        {
+           txbID.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "IdCategory", true, DataSourceUpdateMode.Never));
+            txbCategory.DataBindings.Add(new Binding("Text", dtgvCategory.DataSource, "Name", true, DataSourceUpdateMode.Never));
+        }
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            string name = txbCategory.Text;
+          
+
+            
+            if (CategoryDAO.Instance.InsertCategory(name))
+            {
+                MessageBox.Show(" Insert successfully !");
+               LoadListCategory();
+                  if (insertCategory != null)
+                 insertCategory(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Insert failed !");
+            }
+            LoadListCategory();
+        }
+
+        private void btnEditCategory_Click(object sender, EventArgs e)
+        {
+            string oldName = dtgvCategory.SelectedCells[0].OwningRow.Cells["Name"].Value.ToString();
+            string newName = txbCategory.Text;
+            int idCategory = Convert.ToInt32(txbID.Text);
+
+            if (CategoryDAO.Instance.UpdateCategory(newName, oldName, idCategory))
+            {
+                MessageBox.Show(" Update successfully !");
+                LoadListCategory();
+                if (updateCategory != null)
+                    updateCategory(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Update failed !");
+            }
+            LoadListCategory();
         }
     }
 }

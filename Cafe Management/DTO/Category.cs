@@ -19,7 +19,7 @@ namespace Cafe_Management.DTO
         public Category(DataRow row)
         {
             this.IdCategory = (int)row["idCategory"];
-            this.Name = (string)row["name"];
+            this.Name = (string)row["Name"];
         }
 
         public int IdCategory { get => idCategory; set => idCategory = value; }

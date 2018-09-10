@@ -55,7 +55,25 @@ namespace Cafe_Management
             admin.InsertFood += Admin_InsertFood;
             admin.UpdateFood += Admin_UpdateFood;
             admin.DeleteFood += Admin_DeleteFood;
+          //  admin.InsertCategory += Admin_InsertCategory;
+          //  admin.UpdateCategory += Admin_UpdateCategory;
+            //admin.DeleteCategory += Admin_DeleteCategory;
             admin.ShowDialog();
+        }
+
+        private void Admin_DeleteCategory(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Admin_UpdateCategory(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Admin_InsertCategory(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Admin_DeleteFood(object sender, EventArgs e)
